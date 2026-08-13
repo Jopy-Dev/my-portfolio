@@ -32,6 +32,15 @@ jobs:
         run: npm ci --ignore-scripts
       - name: Install locked structural linter
         run: python -m pip install --disable-pip-version-check -r tools/requirements-quality.txt
+      - name: Install structural linter system dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install --yes --no-install-recommends fd-find
+          if ! command -v fd >/dev/null; then
+            sudo ln -s "$(command -v fdfind)" /usr/local/bin/fd
+          fi
+          fd --version
+          slop doctor
       - name: Verify registry signatures
         run: npm audit signatures
       - name: Audit locked dependencies

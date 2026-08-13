@@ -1,0 +1,149 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+[hidden] {
+  display: none;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--header-height) + 1rem);
+  scrollbar-color: var(--orange) var(--canvas-deep);
+  scrollbar-width: thin;
+}
+
+::-webkit-scrollbar {
+  width: 0.75rem;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--canvas-deep);
+}
+
+::-webkit-scrollbar-thumb {
+  border: 0.2rem solid var(--canvas-deep);
+  background: var(--orange);
+}
+
+body {
+  margin: 0;
+  overflow-x: hidden;
+  background: var(--canvas);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  line-height: 1.6;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: var(--orange);
+  color: var(--orange-ink);
+}
+
+a {
+  color: inherit;
+  text-underline-offset: 0.25em;
+}
+
+button,
+input,
+textarea {
+  color: inherit;
+  font: inherit;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+:focus-visible {
+  outline: none;
+  box-shadow: var(--shadow-focus);
+}
+
+.skip-link {
+  position: fixed;
+  z-index: var(--z-skip);
+  inset: 0.75rem auto auto 0.75rem;
+  padding: 0.7rem 1rem;
+  background: var(--orange);
+  color: var(--orange-ink);
+  font-weight: 700;
+  transform: translateY(-160%);
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+.brand-intro {
+  position: fixed;
+  z-index: var(--z-intro);
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: var(--canvas);
+  pointer-events: none;
+}
+
+.brand-intro span {
+  font-family: var(--font-display);
+  font-size: clamp(4rem, 15vw, 9rem);
+  letter-spacing: 0.015em;
+}
+
+.brand-intro.is-leaving {
+  animation: intro-exit var(--duration-intro-exit) var(--ease-survey) forwards;
+}
+
+@keyframes intro-exit {
+  to {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+}
+
+@media (forced-colors: active) {
+  :focus-visible {
+    outline: 3px solid CanvasText;
+    box-shadow: none;
+  }
+
+  .station-target,
+  .target-mark {
+    border-color: CanvasText;
+    background: Canvas;
+    forced-color-adjust: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  :root:not([data-motion="full"]) *,
+  :root:not([data-motion="full"]) *::before,
+  :root:not([data-motion="full"]) *::after {
+    animation-duration: var(--duration-reduced);
+    animation-iteration-count: 1;
+    transition-duration: var(--duration-reduced);
+  }
+}
+
+[data-motion="reduced"] {
+  scroll-behavior: auto;
+}
+
+:root[data-motion="reduced"] *,
+:root[data-motion="reduced"] *::before,
+:root[data-motion="reduced"] *::after {
+  animation-duration: var(--duration-reduced);
+  animation-iteration-count: 1;
+  transition-duration: var(--duration-reduced);
+}

@@ -1,0 +1,193 @@
+.hero-actions {
+  display: grid;
+  gap: 0.7rem;
+  width: min(100%, 19rem);
+  margin-top: 1.75rem;
+}
+
+.ui-button,
+.project-inspect-trigger,
+.dialog-close {
+  border: 1px solid var(--line);
+  border-radius: var(--radius-control);
+  background: var(--canvas-deep);
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.ui-button {
+  cursor: pointer;
+}
+
+.ui-button-primary {
+  min-height: 3.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 0.9rem 0 1.25rem;
+  border: 2px solid var(--orange);
+  font-family: var(--font-data);
+  font-size: 0.86rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  box-shadow: var(--shadow-primary);
+}
+
+.button-arrow {
+  width: 2rem;
+  height: 2rem;
+  padding: 0.4rem;
+  background: var(--orange);
+  color: var(--orange-ink);
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: square;
+  stroke-width: 1.5;
+}
+
+.ui-button-primary:hover,
+.ui-button-primary:active {
+  background: var(--orange);
+  color: var(--orange-ink);
+}
+
+.ui-button-secondary {
+  min-height: 3.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1.25rem;
+  font-family: var(--font-data);
+  font-size: 0.82rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.ui-button-secondary:hover {
+  border-color: var(--mint);
+  color: var(--mint);
+}
+
+.ui-button:disabled,
+.external-unavailable {
+  border-color: var(--line-soft);
+  color: var(--ink-muted);
+  cursor: not-allowed;
+}
+
+.field-sheet {
+  display: grid;
+  gap: 0.25rem;
+  margin: 2.2rem 0 0;
+  padding: 0.85rem;
+  border: 1px solid var(--line);
+  font-family: var(--font-data);
+  font-size: 0.61rem;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+
+.field-sheet-legend {
+  align-items: center;
+  margin-bottom: 0.45rem;
+  padding-bottom: 0.6rem;
+  border-bottom: 1px solid var(--line-soft);
+}
+
+.field-sheet-legend dd {
+  display: grid;
+  grid-template-columns: 5.5rem 1fr;
+  align-items: center;
+  gap: 0.55rem;
+}
+
+.field-sheet-legend svg {
+  width: 5.5rem;
+  fill: none;
+  stroke: var(--mint);
+  stroke-width: 1.2;
+}
+
+.field-sheet div {
+  display: grid;
+  grid-template-columns: 4.4rem 1fr;
+  gap: 0.5rem;
+}
+
+.field-sheet dt {
+  color: var(--ink-muted);
+}
+
+.field-sheet dd {
+  margin: 0;
+}
+
+.contact-form {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.2rem;
+}
+
+.form-field {
+  display: grid;
+  gap: 0.45rem;
+}
+
+.form-field-message,
+.consent-check,
+.submit-action,
+.form-status {
+  grid-column: 1 / -1;
+}
+
+.form-field label {
+  font-family: var(--font-data);
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.form-field input,
+.form-field textarea {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-control);
+  background: var(--canvas-deep);
+  padding: 0.85rem 1rem;
+}
+
+.form-field input {
+  min-height: 3.25rem;
+}
+
+.form-field textarea {
+  resize: vertical;
+}
+
+.form-field input:invalid:not(:placeholder-shown),
+.form-field textarea:invalid:not(:placeholder-shown) {
+  border-color: var(--orange);
+}
+
+.consent-check {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.8rem;
+}
+
+.consent-check input {
+  width: 1.25rem;
+  height: 1.25rem;
+  margin-top: 0.15rem;
+  accent-color: var(--mint);
+}
+
+.submit-action {
+  width: min(100%, 20rem);
+}
+
+.form-status {
+  min-height: 1.5rem;
+  margin: 0;
+  color: var(--mint);
+}

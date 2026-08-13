@@ -1,0 +1,229 @@
+.site-header {
+  position: fixed;
+  z-index: var(--z-header);
+  inset: 0 0 auto;
+  min-height: var(--header-height);
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 0.75rem var(--gutter);
+  border-bottom: 1px solid var(--line-soft);
+  background: var(--header-bg);
+  backdrop-filter: blur(12px);
+}
+
+.wordmark {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  letter-spacing: 0.06em;
+  text-decoration: none;
+}
+
+.primary-navigation {
+  justify-self: end;
+  display: flex;
+  align-items: center;
+  gap: clamp(0.8rem, 2.2vw, 2rem);
+}
+
+.primary-navigation a {
+  position: relative;
+  min-height: 2.75rem;
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--font-data);
+  font-size: var(--text-label);
+  letter-spacing: 0.08em;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.primary-navigation a::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0;
+  height: 2px;
+  background: transparent;
+}
+
+.primary-navigation a[aria-current="location"]::after,
+.primary-navigation a:hover::after {
+  background: var(--orange);
+}
+
+.preference-tools {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.instrument-button,
+.motion-control,
+.menu-toggle {
+  min-height: 2.75rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-control);
+  background: var(--canvas);
+}
+
+.instrument-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0 0.75rem;
+  cursor: pointer;
+}
+
+.theme-symbol {
+  position: relative;
+  width: 0.9rem;
+  height: 0.9rem;
+  overflow: hidden;
+  border: 1px solid currentColor;
+  border-radius: 50%;
+}
+
+.theme-symbol::after {
+  content: "";
+  position: absolute;
+  inset: -1px -1px -1px 50%;
+  background: currentColor;
+}
+
+.motion-control {
+  display: flex;
+  align-items: stretch;
+  margin: 0;
+  padding: 0;
+}
+
+.motion-control legend {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+}
+
+.motion-control label {
+  position: relative;
+  display: grid;
+  place-items: center;
+  min-width: 3.6rem;
+  min-height: 2.75rem;
+  cursor: pointer;
+}
+
+.motion-control label + label {
+  border-left: 1px solid var(--line);
+}
+
+.motion-control input {
+  position: absolute;
+  opacity: 0;
+}
+
+.motion-control span {
+  padding: 0.35rem 0.55rem;
+  font-family: var(--font-data);
+  font-size: 0.65rem;
+  text-transform: uppercase;
+}
+
+.motion-control input:checked + span {
+  background: var(--mint);
+  color: var(--canvas-deep);
+}
+
+.motion-control input:focus-visible + span {
+  box-shadow: inset 0 0 0 2px var(--focus);
+}
+
+.menu-toggle {
+  display: none;
+  min-width: 2.75rem;
+}
+
+.diagnostic-rail {
+  position: fixed;
+  z-index: var(--z-diagnostic);
+  inset: 35% 0.25rem auto auto;
+  width: 3rem;
+  display: grid;
+  justify-items: center;
+  gap: 0.65rem;
+  color: var(--ink-muted);
+  font-family: var(--font-data);
+  font-size: 0.55rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.rail-label {
+  display: flex;
+  gap: 0.4rem;
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+}
+
+.rail-label strong {
+  color: var(--ink);
+  font-weight: 500;
+}
+
+.rail-track {
+  width: 8rem;
+  height: 2px;
+  margin-block: 3rem;
+  border: 0;
+  overflow: hidden;
+  appearance: none;
+  transform: rotate(90deg);
+}
+
+.rail-track::-webkit-progress-bar {
+  background: var(--line-soft);
+}
+
+.rail-track::-webkit-progress-value,
+.rail-track::-moz-progress-bar {
+  background: var(--orange);
+}
+
+.diagnostic-rail output {
+  color: var(--orange);
+  font-variant-numeric: tabular-nums;
+}
+
+.external-mark {
+  position: relative;
+  width: 0.85rem;
+  height: 0.85rem;
+  border-top: 1px solid currentColor;
+  border-right: 1px solid currentColor;
+}
+
+.external-mark::after {
+  content: "";
+  position: absolute;
+  width: 0.95rem;
+  height: 1px;
+  inset: 50% auto auto 50%;
+  background: currentColor;
+  transform: translate(-50%, -50%) rotate(-45deg);
+  transform-origin: center;
+}
+
+.site-footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 2rem var(--gutter);
+  border-top: 1px solid var(--line);
+  color: var(--ink-muted);
+  font-family: var(--font-data);
+  font-size: 0.68rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}

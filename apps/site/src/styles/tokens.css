@@ -1,0 +1,117 @@
+@theme {
+  --color-navy-canvas: #0b1020;
+  --color-navy-field: #07101b;
+  --color-navy-surface: #101827;
+  --color-navy-raised: #142033;
+  --color-drafting-ink: #f2f5ef;
+  --color-drafting-muted: #aebbb6;
+  --color-survey-line: #70807c;
+  --color-survey-line-soft: #263a41;
+  --color-contour-mint: #61d6b3;
+  --color-survey-orange: #ff7a45;
+  --color-orange-ink: #190c08;
+  --color-focus-peach: #ffb28f;
+  --color-paper-canvas: #eef1e9;
+  --color-paper-field: #e4e9e0;
+  --color-paper-surface: #f8faf5;
+  --color-paper-raised: #ffffff;
+  --color-light-ink: #111b22;
+  --color-light-muted: #42524e;
+  --color-light-line: #52645f;
+  --color-light-line-soft: #bccac3;
+  --color-light-mint: #08775f;
+  --color-light-orange: #c23a0d;
+  --color-light-orange-ink: #ffffff;
+  --color-light-focus: #8f2a08;
+  --font-display: var(--font-bebas), "Arial Narrow", sans-serif;
+  --font-body: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-data: "Cascadia Mono", "SFMono-Regular", Consolas, monospace;
+  --text-display: clamp(6.8rem, 9vw, 9rem);
+  --text-display--line-height: 0.82;
+  --text-section: clamp(4.5rem, 9vw, 6rem);
+  --text-section--line-height: 0.85;
+  --text-station: clamp(1.8rem, 3vw, 2.6rem);
+  --text-station--line-height: 0.95;
+  --text-body: 1rem;
+  --text-body--line-height: 1.6;
+  --text-label: 0.76rem;
+  --text-label--line-height: 1.4;
+  --spacing-gutter: clamp(1rem, 3vw, 3.5rem);
+  --spacing-section: clamp(5rem, 10vw, 10rem);
+  --radius-control: 0.25rem;
+  --shadow-primary: 0 0.75rem 2rem rgba(0, 0, 0, 0.22);
+  --ease-survey: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+:root {
+  --canvas: var(--color-navy-canvas);
+  --canvas-deep: var(--color-navy-field);
+  --surface: var(--color-navy-surface);
+  --surface-raised: var(--color-navy-raised);
+  --ink: var(--color-drafting-ink);
+  --ink-muted: var(--color-drafting-muted);
+  --line: var(--color-survey-line);
+  --line-soft: var(--color-survey-line-soft);
+  --mint: var(--color-contour-mint);
+  --orange: var(--color-survey-orange);
+  --orange-ink: var(--color-orange-ink);
+  --focus: var(--color-focus-peach);
+  --header-bg: rgba(11, 16, 32, 0.96);
+  --backdrop: rgba(3, 7, 12, 0.76);
+  --station-halo:
+    0 0 0 0.45rem color-mix(in srgb, var(--mint) 25%, transparent),
+    0 0 0 0.75rem color-mix(in srgb, var(--ink) 18%, transparent);
+  --shadow-focus: 0 0 0 0.2rem var(--canvas), 0 0 0 0.35rem var(--focus);
+  --content-max: 118rem;
+  --gutter: var(--spacing-gutter);
+  --header-height: 5.25rem;
+  --duration-intro-exit: 620ms;
+  --duration-route: 1350ms;
+  --duration-node: 900ms;
+  --duration-theme: 240ms;
+  --duration-reduced: 0.01ms;
+  --z-base: 0;
+  --z-terrain-route: 2;
+  --z-terrain-station: 3;
+  --z-terrain-ruler: 4;
+  --z-identity: 5;
+  --z-registration: 6;
+  --z-diagnostic: 80;
+  --z-header: 100;
+  --z-intro: 900;
+  --z-skip: 1000;
+}
+
+[data-theme="light"] {
+  --canvas: var(--color-paper-canvas);
+  --canvas-deep: var(--color-paper-field);
+  --surface: var(--color-paper-surface);
+  --surface-raised: var(--color-paper-raised);
+  --ink: var(--color-light-ink);
+  --ink-muted: var(--color-light-muted);
+  --line: var(--color-light-line);
+  --line-soft: var(--color-light-line-soft);
+  --mint: var(--color-light-mint);
+  --orange: var(--color-light-orange);
+  --orange-ink: var(--color-light-orange-ink);
+  --focus: var(--color-light-focus);
+  --header-bg: rgba(238, 241, 233, 0.96);
+}
+
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme]) {
+    --canvas: var(--color-paper-canvas);
+    --canvas-deep: var(--color-paper-field);
+    --surface: var(--color-paper-surface);
+    --surface-raised: var(--color-paper-raised);
+    --ink: var(--color-light-ink);
+    --ink-muted: var(--color-light-muted);
+    --line: var(--color-light-line);
+    --line-soft: var(--color-light-line-soft);
+    --mint: var(--color-light-mint);
+    --orange: var(--color-light-orange);
+    --orange-ink: var(--color-light-orange-ink);
+    --focus: var(--color-light-focus);
+    --header-bg: rgba(238, 241, 233, 0.96);
+  }
+}

@@ -1,0 +1,147 @@
+# slop — agentic code quality linter
+# https://github.com/JordanGunn/agent-slop-lint
+# Profile: strict
+
+root = "."
+
+exclude = [
+  "**/node_modules/**",
+  "**/.next/**",
+  "**/out/**",
+  "**/dist/**",
+  "**/coverage/**",
+  "**/prisma/migrations/**",
+  "**/generated/**",
+  "**/vendor/**",
+  "**/fixtures/**",
+  ".codex/**",
+  ".impeccable/**",
+]
+
+[rules.structural.complexity]
+enabled = true
+cyclomatic_threshold = 6
+cognitive_threshold = 10
+npath_threshold = 100
+severity = "error"
+
+[rules.structural.class.complexity]
+enabled = true
+threshold = 30
+severity = "error"
+
+[rules.structural.class.coupling]
+enabled = true
+threshold = 5
+severity = "error"
+
+[rules.structural.class.inheritance.depth]
+enabled = true
+threshold = 3
+severity = "error"
+
+[rules.structural.class.inheritance.children]
+enabled = true
+threshold = 7
+severity = "error"
+
+[rules.structural.hotspots]
+enabled = true
+since = "7 days ago"
+min_commits = 1
+fail_on_quadrant = ["hotspot", "churning_simple"]
+severity = "error"
+
+[rules.structural.packages]
+enabled = true
+max_distance = 0.5
+fail_on_zone = ["pain"]
+severity = "error"
+
+[rules.structural.deps]
+enabled = true
+fail_on_cycles = true
+severity = "error"
+
+[rules.structural.local_imports]
+enabled = true
+severity = "warning"
+
+[rules.structural.redundancy]
+enabled = true
+min_shared = 3
+min_score = 0.5
+severity = "warning"
+
+[rules.structural.types.sentinels]
+enabled = true
+max_cardinality = 8
+require_str_annotation = true
+severity = "warning"
+
+[rules.structural.types.hidden_mutators]
+enabled = true
+require_type_annotation = true
+min_mutations = 1
+severity = "warning"
+
+[rules.structural.types.escape_hatches]
+enabled = true
+threshold = 0.30
+min_annotations = 5
+severity = "warning"
+
+[rules.structural.duplication]
+enabled = true
+threshold = 0.05
+min_leaf_nodes = 10
+min_cluster_size = 2
+severity = "warning"
+
+[rules.structural.god_module]
+enabled = true
+threshold = 20
+severity = "warning"
+
+[rules.structural.orphans]
+enabled = false
+min_confidence = "high"
+severity = "warning"
+
+[rules.information.volume]
+enabled = true
+threshold = 500
+severity = "error"
+
+[rules.information.difficulty]
+enabled = true
+threshold = 20
+severity = "error"
+
+[rules.information.magic_literals]
+enabled = true
+threshold = 3
+severity = "warning"
+
+[rules.information.section_comments]
+enabled = true
+threshold = 2
+severity = "warning"
+
+[rules.lexical.stutter]
+enabled = true
+min_overlap_tokens = 2
+severity = "warning"
+
+[rules.lexical.verbosity]
+enabled = true
+max_mean_tokens = 3.0
+min_identifiers = 5
+severity = "warning"
+
+[rules.lexical.tersity]
+enabled = true
+max_density = 0.50
+max_len = 2
+min_identifiers = 5
+severity = "warning"

@@ -1,0 +1,144 @@
+@media (max-width: 42rem) {
+  :root {
+    --gutter: 0.85rem;
+  }
+
+  .wordmark {
+    font-size: 1.7rem;
+  }
+
+  .preference-tools {
+    width: calc(100% - (2 * var(--gutter)));
+    align-items: stretch;
+  }
+
+  .instrument-button {
+    flex: 1;
+    justify-content: center;
+  }
+
+  .motion-control {
+    flex: 3;
+  }
+
+  .motion-control label {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .survey-frame::before {
+    inset: 0.65rem;
+  }
+
+  .survey-frame::after {
+    inset-inline: 0.65rem;
+    bottom: 0.65rem;
+  }
+
+  .registration,
+  .survey-axis {
+    display: none;
+  }
+
+  .identity-panel {
+    min-height: auto;
+    padding: 4rem 2rem 3rem;
+  }
+
+  .identity-panel h1 {
+    font-size: clamp(4.3rem, 22vw, 6rem);
+  }
+
+  .field-sheet {
+    font-size: 0.56rem;
+  }
+
+  .map-instruction {
+    inset: 1.25rem auto auto 1.25rem;
+  }
+
+  .station {
+    position: absolute;
+    right: 1.5rem;
+    left: 1.5rem;
+    font-size: 1.55rem;
+  }
+
+  .station-web {
+    top: 16%;
+  }
+
+  .station-mobile {
+    top: 34%;
+  }
+
+  .station-desktop {
+    top: 52%;
+  }
+
+  .station-ai {
+    top: 70%;
+    max-width: none;
+  }
+
+  .station-target {
+    order: 2;
+    margin-left: auto;
+  }
+
+  .content-section {
+    padding-block: 5rem;
+  }
+
+  .section-heading h2 {
+    font-size: clamp(4.4rem, 19vw, 6rem);
+  }
+
+  .skills-register {
+    grid-template-columns: 1fr;
+  }
+
+  .skills-register section + section {
+    border-top: 1px solid var(--line);
+    border-left: 0;
+  }
+
+  .profile-principles div {
+    grid-template-columns: 1fr;
+    gap: 0.4rem;
+  }
+
+  .project-row {
+    grid-template-columns: 3rem 1fr;
+    gap: 1rem;
+  }
+
+  .project-inspect-trigger {
+    grid-column: 2;
+    justify-self: start;
+  }
+
+  .contact-form {
+    grid-template-columns: 1fr;
+  }
+
+  .form-field,
+  .form-field-message,
+  .consent-check,
+  .submit-action,
+  .form-status {
+    grid-column: 1;
+  }
+
+  .project-dialog > *:not(.dialog-header) {
+    margin-inline: 1rem;
+  }
+
+  .project-dialog dl div {
+    grid-template-columns: 1fr;
+  }
+
+  .site-footer {
+    flex-direction: column;
+  }
+}

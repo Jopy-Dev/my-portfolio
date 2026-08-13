@@ -1,0 +1,33 @@
+{
+  "name": "jopy-dev-portfolio",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Proof-first Jopy-Dev portfolio and protected contact service.",
+  "engines": {
+    "node": "^22.22.2 || ^24.18.0"
+  },
+  "packageManager": "npm@10.9.7",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "npm run dev --workspace @jopy-dev/site",
+    "build": "npm run build --workspace @jopy-dev/site",
+    "format": "biome format --write .",
+    "format:check": "biome format .",
+    "lint": "biome lint .",
+    "check": "biome check .",
+    "check:fix": "biome check --write .",
+    "ci": "biome ci .",
+    "typecheck": "npm run typecheck --workspaces --if-present",
+    "test": "node --test scripts/quality/*.test.mjs",
+    "guard:tokens": "node scripts/quality/check-design-tokens.mjs",
+    "guard:env": "node scripts/quality/check-env-example.mjs",
+    "guard:public": "node scripts/quality/check-public-files.mjs",
+    "verify": "npm run guard:tokens && npm run guard:env && npm run guard:public && npm run ci && npm run typecheck && npm test && npm run build"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "2.5.8"
+  }
+}

@@ -1,0 +1,93 @@
+{
+  "version": 1,
+  "approvedBy": "Mark Jommer",
+  "approvedOn": "2026-08-14",
+  "assets": [
+    {
+      "id": "night-atlas-terrain",
+      "sourceProvider": "OpenAI ImageGen",
+      "sourceReference": "Option C \u2014 Night Atlas",
+      "sourceSha256": "5266483429146b8aa192786e290e218111cd9e85288f3b25b6eb3ad77b459557",
+      "license": "owner-approved generated asset",
+      "role": "decorative capability terrain",
+      "altOwner": "decorative-empty-alt",
+      "derivatives": [
+        {
+          "path": "apps/site/public/assets/terrain/night-atlas-640.avif",
+          "width": 640,
+          "height": 427,
+          "format": "avif",
+          "bytes": 31943,
+          "sha256": "7e0c47585e1e5baba3023c384b189f2232b519d902f4cb6cde0dffb64a3d12b2"
+        },
+        {
+          "path": "apps/site/public/assets/terrain/night-atlas-640.webp",
+          "width": 640,
+          "height": 427,
+          "format": "webp",
+          "bytes": 39738,
+          "sha256": "b6cd1238ed33f3582fa355fa4919fa96b8c0f83aaa34577722ac5e32b7eca54a"
+        },
+        {
+          "path": "apps/site/public/assets/terrain/night-atlas-960.avif",
+          "width": 960,
+          "height": 640,
+          "format": "avif",
+          "bytes": 81702,
+          "sha256": "fa76a348c2f0e4c87ded56624172bd4b4b78917bf55efcd1b8e5a9bd3c170534"
+        },
+        {
+          "path": "apps/site/public/assets/terrain/night-atlas-960.webp",
+          "width": 960,
+          "height": 640,
+          "format": "webp",
+          "bytes": 107108,
+          "sha256": "66a9187a255a95ec2c87fcd6a6b8481670b0eea360cdab7dd6d0214551793727"
+        },
+        {
+          "path": "apps/site/public/assets/terrain/night-atlas-1280.avif",
+          "width": 1280,
+          "height": 853,
+          "format": "avif",
+          "bytes": 146918,
+          "sha256": "45cebb6d438418a77c0114e401e0063c97720c7c398ad86de82eac7193eb69e0"
+        },
+        {
+          "path": "apps/site/public/assets/terrain/night-atlas-1280.webp",
+          "width": 1280,
+          "height": 853,
+          "format": "webp",
+          "bytes": 193494,
+          "sha256": "080af682dded4ec5f36eae8624c51e15b8f8adf864adc14a71dbc36e78f86a15"
+        },
+        {
+          "path": "apps/site/public/assets/terrain/night-atlas-1536.avif",
+          "width": 1536,
+          "height": 1024,
+          "format": "avif",
+          "bytes": 204831,
+          "sha256": "a26e2d4c51b34d10f9a76663d442c84acff7b8702eafde2cff85d41848dc0356"
+        },
+        {
+          "path": "apps/site/public/assets/terrain/night-atlas-1536.webp",
+          "width": 1536,
+          "height": 1024,
+          "format": "webp",
+          "bytes": 274248,
+          "sha256": "1156970077215c79eac8d76e189a24534b661f50330c5701d89657346b492acc"
+        }
+      ]
+    },
+    {
+      "id": "bebas-neue-regular",
+      "sourceProvider": "Google Fonts upstream distribution",
+      "role": "display landmarks",
+      "path": "apps/site/src/assets/fonts/BebasNeue-Regular.woff2",
+      "format": "woff2",
+      "bytes": 21524,
+      "sha256": "6cb02cd1e1b83dd370fd10bca7be9463ce601c3cbb06acf3d7b1eeb4501d8744",
+      "licensePath": "apps/site/src/assets/fonts/BebasNeue-OFL.txt",
+      "license": "OFL-1.1"
+    }
+  ]
+}

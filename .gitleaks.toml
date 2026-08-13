@@ -2,3 +2,7 @@ title = "Jopy-Dev Portfolio Gitleaks Configuration"
 
 [extend]
 useDefault = true
+
+[[allowlists]]
+description = "Ignore generated Next build caches with ephemeral preview keys"
+paths = ['''(^|/)\.next/''']

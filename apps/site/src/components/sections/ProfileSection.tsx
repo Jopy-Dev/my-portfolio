@@ -1,4 +1,4 @@
-import { SectionHeader } from "@/components/ui";
+import { DefinitionRows, SectionHeader } from "@/components/ui";
 
 const PRINCIPLES = [
   { label: "Architecture", value: "Clean boundaries, reusable systems, maintainable delivery." },
@@ -12,12 +12,7 @@ const PRINCIPLES = [
 function ProfilePrinciples() {
   return (
     <dl className="profile-principles">
-      {PRINCIPLES.map((principle) => (
-        <div key={principle.label}>
-          <dt>{principle.label}</dt>
-          <dd>{principle.value}</dd>
-        </div>
-      ))}
+      <DefinitionRows rows={PRINCIPLES} />
     </dl>
   );
 }

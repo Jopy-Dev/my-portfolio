@@ -35,7 +35,7 @@ jobs:
       - name: Install structural linter system dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install --yes --no-install-recommends fd-find
+          sudo apt-get install --yes --no-install-recommends fd-find ripgrep
           if ! command -v fd >/dev/null; then
             sudo ln -s "$(command -v fdfind)" /usr/local/bin/fd
           fi

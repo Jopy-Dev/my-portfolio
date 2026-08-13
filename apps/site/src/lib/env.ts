@@ -1,24 +1,17 @@
 import { z } from "zod";
 
-const optionalString = z.preprocess(
-  (value) => (value === "" ? undefined : value),
-  z.string().optional(),
-);
+const emptyStringToUndefined = (value: unknown) => (value === "" ? undefined : value);
+const isHttpsUrl = (value: string) => value.startsWith("https://");
+
+const optionalString = z.preprocess(emptyStringToUndefined, z.string().optional());
 const optionalHttpsUrl = z.preprocess(
-  (value) => (value === "" ? undefined : value),
-  z
-    .string()
-    .url()
-    .refine((value) => value.startsWith("https://"), "Expected an HTTPS URL")
-    .optional(),
+  emptyStringToUndefined,
+  z.string().url().refine(isHttpsUrl, "Expected an HTTPS URL").optional(),
 );
 
 const siteEnvironmentSchema = z
   .object({
-    SITE_URL: z
-      .string()
-      .url()
-      .refine((value) => value.startsWith("https://"), "Expected an HTTPS URL"),
+    SITE_URL: z.string().url().refine(isHttpsUrl, "Expected an HTTPS URL"),
     SITE_BASE_PATH: z
       .string()
       .default("")

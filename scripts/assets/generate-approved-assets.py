@@ -26,6 +26,13 @@ def sha256(path: Path) -> str:
     return digest.hexdigest()
 
 
+def file_record(path: Path, file_format: str) -> dict[str, object]:
+    return {
+        "path": path.as_posix(), "format": file_format,
+        "bytes": path.stat().st_size, "sha256": sha256(path),
+    }
+
+
 def save_derivative(
     image: Image.Image,
     output_directory: Path,
@@ -37,13 +44,11 @@ def save_derivative(
 ) -> dict[str, object]:
     target = output_directory / f"night-atlas-{width}.{extension}"
     image.save(target, image_format, **options)
+    record = file_record(target, extension)
     return {
-        "path": target.as_posix(),
-        "width": width,
-        "height": height,
-        "format": extension,
-        "bytes": target.stat().st_size,
-        "sha256": sha256(target),
+        "path": record["path"], "width": width, "height": height,
+        "format": record["format"], "bytes": record["bytes"],
+        "sha256": record["sha256"],
     }
 
 
@@ -92,19 +97,20 @@ def save_font(source: Path, license_source: Path, output_directory: Path) -> dic
     font.save(target)
     license_target = output_directory / "BebasNeue-OFL.txt"
     copyfile(license_source, license_target)
+    record = file_record(target, "woff2")
     return {
-        "path": target.as_posix(),
-        "format": "woff2",
-        "bytes": target.stat().st_size,
-        "sha256": sha256(target),
+        **record,
         "licensePath": license_target.as_posix(),
         "license": "OFL-1.1",
     }
 
 
-def relative_records(records: list[dict[str, object]], root: Path) -> list[dict[str, object]]:
+def relative_records(
+    records: list[dict[str, object]], root: Path, keys: tuple[str, ...] = ("path",)
+) -> list[dict[str, object]]:
     for record in records:
-        record["path"] = Path(str(record["path"])).relative_to(root).as_posix()
+        for key in keys:
+            record[key] = Path(str(record[key])).relative_to(root).as_posix()
     return records
 
 
@@ -115,12 +121,6 @@ def parse_arguments() -> argparse.Namespace:
     parser.add_argument("--font-license", required=True, type=Path)
     parser.add_argument("--root", default=Path.cwd(), type=Path)
     return parser.parse_args()
-
-
-def relative_font_record(record: dict[str, object], root: Path) -> dict[str, object]:
-    for key in ("path", "licensePath"):
-        record[key] = Path(str(record[key])).relative_to(root).as_posix()
-    return record
 
 
 def create_manifest(
@@ -175,7 +175,7 @@ def main() -> None:
     )
     manifest = create_manifest(
         relative_records(terrain_records, root),
-        relative_font_record(font_record, root),
+        relative_records([font_record], root, ("path", "licensePath"))[0],
     )
     write_manifest(root, manifest)
 

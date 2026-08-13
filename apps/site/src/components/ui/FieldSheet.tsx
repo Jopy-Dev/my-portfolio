@@ -3,11 +3,20 @@ interface DefinitionRow {
   readonly value: string;
 }
 
-interface FieldSheetProps {
+interface DefinitionRowsProps {
   readonly rows: readonly DefinitionRow[];
 }
 
-export function FieldSheet({ rows }: FieldSheetProps) {
+export function DefinitionRows({ rows }: DefinitionRowsProps) {
+  return rows.map((row) => (
+    <div key={row.label}>
+      <dt>{row.label}</dt>
+      <dd>{row.value}</dd>
+    </div>
+  ));
+}
+
+export function FieldSheet({ rows }: DefinitionRowsProps) {
   return (
     <dl className="field-sheet" aria-label="Portfolio field sheet">
       <div className="field-sheet-legend">
@@ -21,12 +30,7 @@ export function FieldSheet({ rows }: FieldSheetProps) {
           <span>Qualitative contours / no rank</span>
         </dd>
       </div>
-      {rows.map((row) => (
-        <div key={row.label}>
-          <dt>{row.label}</dt>
-          <dd>{row.value}</dd>
-        </div>
-      ))}
+      <DefinitionRows rows={rows} />
     </dl>
   );
 }

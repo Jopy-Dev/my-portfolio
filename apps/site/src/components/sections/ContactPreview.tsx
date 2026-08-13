@@ -1,14 +1,7 @@
 "use client";
 
 import { type FormEvent, useRef, useState } from "react";
-import {
-  ArrowIcon,
-  Button,
-  ExternalMark,
-  InputField,
-  SectionHeader,
-  TextareaField,
-} from "@/components/ui";
+import { ArrowIcon, Button, ExternalMark, FormField, SectionHeader } from "@/components/ui";
 
 const INVALID_PREVIEW_MESSAGE = "Check the highlighted fields, then try the preview again.";
 const VALID_PREVIEW_MESSAGE = "Prototype verified. No message was sent or stored.";
@@ -17,16 +10,19 @@ function useContactPreview() {
   const [status, setStatus] = useState("");
   const statusRef = useRef<HTMLParagraphElement>(null);
 
+  const reportStatus = (message: string) => {
+    setStatus(message);
+    window.requestAnimationFrame(() => statusRef.current?.focus());
+  };
+
   const submitPreview = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const form = event.currentTarget;
     if (!form.reportValidity()) {
-      setStatus(INVALID_PREVIEW_MESSAGE);
-      window.requestAnimationFrame(() => statusRef.current?.focus());
+      reportStatus(INVALID_PREVIEW_MESSAGE);
       return;
     }
-    setStatus(VALID_PREVIEW_MESSAGE);
-    window.requestAnimationFrame(() => statusRef.current?.focus());
+    reportStatus(VALID_PREVIEW_MESSAGE);
   };
 
   return { status, statusRef, submitPreview };
@@ -35,7 +31,7 @@ function useContactPreview() {
 function ContactFields() {
   return (
     <>
-      <InputField
+      <FormField
         id="name"
         name="name"
         label="Name"
@@ -44,7 +40,7 @@ function ContactFields() {
         maxLength={80}
         required
       />
-      <InputField
+      <FormField
         id="email"
         name="email"
         label="Reply email"
@@ -53,11 +49,12 @@ function ContactFields() {
         maxLength={254}
         required
       />
-      <TextareaField
+      <FormField
         id="message"
         name="message"
         label="Message"
         className="form-field-message"
+        as="textarea"
         minLength={10}
         maxLength={2000}
         rows={6}

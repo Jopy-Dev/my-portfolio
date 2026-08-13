@@ -28,10 +28,8 @@ def sha256(path: Path) -> str:
 
 def file_record(path: Path, file_format: str) -> dict[str, object]:
     return {
-        "path": path.as_posix(),
-        "format": file_format,
-        "bytes": path.stat().st_size,
-        "sha256": sha256(path),
+        "path": path.as_posix(), "format": file_format,
+        "bytes": path.stat().st_size, "sha256": sha256(path),
     }
 
 
@@ -48,11 +46,8 @@ def save_derivative(
     image.save(target, image_format, **options)
     record = file_record(target, extension)
     return {
-        "path": record["path"],
-        "width": width,
-        "height": height,
-        "format": record["format"],
-        "bytes": record["bytes"],
+        "path": record["path"], "width": width, "height": height,
+        "format": record["format"], "bytes": record["bytes"],
         "sha256": record["sha256"],
     }
 
@@ -111,9 +106,7 @@ def save_font(source: Path, license_source: Path, output_directory: Path) -> dic
 
 
 def relative_records(
-    records: list[dict[str, object]],
-    root: Path,
-    keys: tuple[str, ...] = ("path",),
+    records: list[dict[str, object]], root: Path, keys: tuple[str, ...] = ("path",)
 ) -> list[dict[str, object]]:
     for record in records:
         for key in keys:

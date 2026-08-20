@@ -84,8 +84,8 @@
       "role": "display landmarks",
       "path": "apps/site/src/assets/fonts/BebasNeue-Regular.woff2",
       "format": "woff2",
-      "bytes": 21524,
-      "sha256": "6cb02cd1e1b83dd370fd10bca7be9463ce601c3cbb06acf3d7b1eeb4501d8744",
+      "bytes": 21512,
+      "sha256": "a46d885c8df55214ce6a02e1714389620a5712801a30e6b80bddfc7091d8e619",
       "licensePath": "apps/site/src/assets/fonts/BebasNeue-OFL.txt",
       "license": "OFL-1.1"
     }

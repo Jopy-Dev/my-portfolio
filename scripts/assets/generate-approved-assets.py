@@ -4,7 +4,6 @@ import argparse
 import hashlib
 import json
 from pathlib import Path
-from shutil import copyfile
 
 from fontTools.ttLib import TTFont
 from PIL import Image
@@ -92,11 +91,14 @@ def save_terrain(source: Path, output_directory: Path) -> list[dict[str, object]
 def save_font(source: Path, license_source: Path, output_directory: Path) -> dict[str, object]:
     output_directory.mkdir(parents=True, exist_ok=True)
     target = output_directory / "BebasNeue-Regular.woff2"
-    font = TTFont(source)
+    font = TTFont(source, recalcTimestamp=False)
     font.flavor = "woff2"
     font.save(target)
     license_target = output_directory / "BebasNeue-OFL.txt"
-    copyfile(license_source, license_target)
+    license_text = "\n".join(
+        line.rstrip() for line in license_source.read_text(encoding="utf-8").splitlines()
+    )
+    license_target.write_text(license_text + "\n", encoding="utf-8", newline="\n")
     record = file_record(target, "woff2")
     return {
         **record,

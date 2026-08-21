@@ -4,7 +4,7 @@ Application type: web app.
 
 Personal portfolio for Mark Jommer (`Jopy-Dev`), targeting hiring managers and potential clients. Static frontend deploys through GitHub Pages; protected contact submissions use a separate Cloudflare Worker and Turnstile.
 
-Status: Step 13 complete; pre-Step-14 readiness. Local landing parity is available; project evidence, contact delivery, analytics, legal content, and production deployment remain blocked until later workflow gates.
+Status: Step 13 complete; pre-Step-14 readiness passed. Local landing parity is available; Wave 0 implementation awaits approval, while production content and services remain blocked until later workflow gates.
 
 ## Local Development
 
